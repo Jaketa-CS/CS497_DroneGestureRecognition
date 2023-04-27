@@ -48,15 +48,15 @@ d.streamon()
 vthread = threading.Thread(target=videothread)
 vthread.start()
 
-cv.namedWindow('Live Feed', cv.WINDOW_NORMAL)
+cv.namedWindow('LiveFeed', cv.WINDOW_NORMAL)
 
 oldframe = d.get_frame_read().frame
 while running:
     img = d.get_frame_read().frame
     #img = cv.resize(img,(360,240))
 
-    cv.imshow('Life Feed - {}%'.format(d.get_battery()),img)
-    #cv.imshow('livefeed', img)
+    cv.imshow('LiveFeed',img)
+    cv.setWindowTitle('LiveFeed', '{}%'.format(d.get_battery()))
     val = cv.waitKey(1)
     if val & 0xFF ==  ord('q'):
         break

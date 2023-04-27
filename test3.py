@@ -54,7 +54,7 @@ d.streamon()
 vthread = threading.Thread(target=videothread)
 vthread.start()
 
-cv.namedWindow('Live Feed', cv.WINDOW_NORMAL)
+cv.namedWindow('LiveFeed', cv.WINDOW_NORMAL)
 # Inspired by our hw7 + https://docs.opencv.org/3.4/d4/dee/tutorial_optical_flow.html
 
 color = np.random.randint(0, 255, (100, 3))
@@ -85,8 +85,8 @@ while running:
             frame = cv.circle(frame, (int(a), int(b)), 5, color[i].tolist(), -1)
         img = cv.add(frame, mask)
 
-        cv.imshow('Life Feed - {}%'.format(d.get_battery()),img)
-        #cv.imshow('livefeed', img)
+        cv.imshow('LiveFeed',img)
+        cv.setWindowTitle('LiveFeed', '{}%'.format(d.get_battery()))
         val = cv.waitKey(1)
         if val & 0xFF ==  ord('q'):
             break
