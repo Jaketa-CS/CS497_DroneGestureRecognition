@@ -1,5 +1,6 @@
 from djitellopy import Tello
 import cv2 as cv
+import os
 
 #w = 
 #h = 
@@ -22,6 +23,9 @@ recording = False
 outImages = []
 
 cv.namedWindow('LiveFeed', cv.WINDOW_NORMAL)
+if not os.path.exists(outdir):
+    os.mkdir(outdir)
+os.chdir(outdir)
 while True:
     frame = d.get_frame_read().frame
     #frame = cv.resize(frame, (w, h))
@@ -36,14 +40,22 @@ while True:
         outImages.append(frame)
     else:
         cv.setWindowTitle('LiveFeed', 'Not Recording')
+        if len(outImages) > 0:
+            newdir = 'run{}'.format(runcount)
+            os.mkdir(newdir)
+            os.chdir(newdir)
+            for i, img in enumerate(outImages):
+                cv.setWindowTitle('LiveFeed', 'Saving')
+                cv.imwrite('{}.jpg'.format(i), img)
+            runcount = runcount + 1
+            outImages = []
+            os.chdir('..')
 
-for i, img in enumerate(outImages):
-    cv.imwrite('{}/{}_{}.jpg'.format(outdir, runcount, i), img)
-
+os.chdir('..')
 d.streamoff()
 d.end()
 
 myfile = open(filename, 'w')
-runcount = runcount + 1
+# runcount = runcount + 1
 myfile.write(str(runcount))
 myfile.close()
