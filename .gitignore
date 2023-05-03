@@ -1,2 +1,5 @@
 .*
-recImages/*
+recImages*
+oldimages
+mygestures
+counter.txt
