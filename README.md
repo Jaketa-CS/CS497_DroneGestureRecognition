@@ -28,7 +28,8 @@ These scripts handle recording training data and preprocessing the data to make 
 
 ### CNN Training
 
- - **droneCNN.py**: saves a CNN model on recorded training images
+ - **droneCNN_image.py**: saves a CNN model on recorded training images
+ - **droneCNN_oordinates**: Script to train model on cvs coordinates
 
 ### CNN Inference
 
@@ -36,7 +37,6 @@ These scripts handle recording training data and preprocessing the data to make 
  - **drone_t.py**: Same as drone.py but with mediapipe integration
 
 ### Utilities
- - **droneCNN_oordinates**: Script to train model on cvs coordinates
  - **my_main.py**: Do hand recognition and send commands to drone. 
  - **test1.py**: Basic flight path of the drone; takes off, flies while tracing a 1m cube, rotates 90 degrees, and repeats that flight path before landing
  - **test2.py**: Same as test1.py with video streaming
