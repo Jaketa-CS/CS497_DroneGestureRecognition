@@ -1,6 +1,21 @@
-# CS497 OptimalFlowDrone
+# CS497 Gesture Controlled Drone
 
 ## Introduction
+A final project for CS497: Computer Vision at Western Colorado University. Our goal is to control a DJI Tello EDU drone via hand gestures.
+
+Our process and attempts:
+1. Optical flow flight path replication from a recorded video - we found limitations with the camera and model in conjunction with large movements
+1. Follow a user, but this had implications of human tracking/identification, and tracking in 3D space requires far more time/cognition than we had time for
+1. Self-constructed gesture recognition CNN, but our training data was limited and known methodology was lacking
+1. Mediapipe supported recognition, this was very successful and allowed us to focus on integrating outputs from the model with flight controls
+
+Results, and stuff we learned:
+ - Training data management
+ - Spiradicness of a live motor controlled device
+ - System state management
+ - Handling recognizing actions from a generic human
+
+Signed; Marcos Ordonos, Jake Teeter, and Andrew Nyland
 
 ## Scripts
 
@@ -8,18 +23,19 @@
 These scripts handle recording training data and preprocessing the data to make it more useful, or more advantageous for a neural network to be applied.
 
  - `create.py`: Initial blurring and processing of recorded images from the drone of hand gestures 
- - `preprocessing.py`: generates one-to-many of images, generated images are brightness adjusted and edges detected
+ - `preprocessing.py`: generates one-to-many of images
+     - generated images are brightness adjusted and edges detected
 
 #### CNN Training
 
  - `droneCNN.py`: saves a CNN model on recorded training images
 
-### CNN Inference
+#### CNN Inference
 
  - `drone.py`: Tests label identification of the CNN on a live feed from the drone
  - `drone_t.py`: Same as drone.py but with mediapipe integration
 
-### Utilities
+#### Utilities
 
  - `test1.py`: Basic flight path of the drone; takes off, flies while tracing a 1m cube, rotates 90 degrees, and repeats that flight path before landing
  - `test2.py`: Same as test1.py with video streaming
@@ -30,11 +46,11 @@ These scripts handle recording training data and preprocessing the data to make 
      - 'q'/'Q' to exit the program
      - uses counter.txt to count recordings and saves frames to a folder as individual images
 
-### Supplemental
+#### Supplemental
  - `counter.txt`: a necessary text file for recframes.py, if used by a new user we recommend filling this file with a string of '-1' (as such, it will start at 0)
 
 
-## Scripts - more information
+### More Information
 
 Below is a sample output for `getspecs.py`:
 ```
@@ -60,5 +76,5 @@ Below is a state machine representation of `recframes.py`:
  - [TF hand gesture recognition tutorial](https://techvidvan.com/tutorials/hand-gesture-recognition-tensorflow-opencv/)
  - [mediapipe](https://www.section.io/engineering-education/creating-a-hand-tracking-module/)
 ### Code sources
- - [Git repository](https://github.com/Jaketa-CS/CS497_OptimalFlowDrone)
+ - [Project git repository](https://github.com/Jaketa-CS/CS497_OptimalFlowDrone)
  - [Link to access image on ONEdRIVE](https://westernstatecoloradou-my.sharepoint.com/:u:/g/personal/marcos_ordonez_western_edu/EXoWoUeohZdKk-me1iAHF-gBABaIlLkrLvVN05MPQsLT3w?e=ltUGxq) (Western Colorado University account required)
