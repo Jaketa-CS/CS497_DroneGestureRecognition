@@ -1,18 +1,64 @@
-# CS497_OptimalFlowDrone
+# CS497 OptimalFlowDrone
+
+## Introduction
+
+## Scripts
+
+### Preprocessing
+These scripts handle recording training data and preprocessing the data to make it more useful, or more advantageous for a neural network to be applied.
+
+ - `create.py`: Initial blurring and processing of recorded images from the drone of hand gestures 
+ - `preprocessing.py`: generates one-to-many of images, generated images are brightness adjusted and edges detected
+
+#### CNN Training
+
+ - `droneCNN.py`: saves a CNN model on recorded training images
+
+### CNN Inference
+
+ - `drone.py`: Tests label identification of the CNN on a live feed from the drone
+ - `drone_t.py`: Same as drone.py but with mediapipe integration
+
+### Utilities
+
+ - `test1.py`: Basic flight path of the drone; takes off, flies while tracing a 1m cube, rotates 90 degrees, and repeats that flight path before landing
+ - `test2.py`: Same as test1.py with video streaming
+ - `test3.py`: Same as test2.py with optical flow implemented
+ - `getspecs.py`: Basic situational information about the drone, no controls
+ - `recframes.py`: Records frames from live stream for training data, no flight
+     - 'SPACE' for start/stop recording, this is represented in the menubar of the live feed view
+     - 'q'/'Q' to exit the program
+     - uses counter.txt to count recordings and saves frames to a folder as individual images
+
+### Supplemental
+ - `counter.txt`: a necessary text file for recframes.py, if used by a new user we recommend filling this file with a string of '-1' (as such, it will start at 0)
 
 
-DJI Tello Hand Gesture control: 
+## Scripts - more information
 
-> https://github.com/kinivi/tello-gesture-control
+Below is a sample output for `getspecs.py`:
+"""
+[INFO] tello.py - 122 - Tello instance was initialized. Host: '192.168.10.1'. Port: '8889'.
+[INFO] tello.py - 437 - Send command: 'command'
+[INFO] tello.py - 461 - Response command: 'ok'
+Battery: 100
+Temperature: (55, 59)
+Barometer: 232850.0
+RPY: 0, 0, -153
+"""
 
-> https://techvidvan.com/tutorials/hand-gesture-recognition-tensorflow-opencv/
+Below is a state machine representation of `recframes.py`:
+![recframes.png](recframes.png)
 
-> media pipe: https://www.section.io/engineering-education/creating-a-hand-tracking-module/
 
 
-Whatershed Algorithm:
-
-> https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Watershed_Algorithm_Marker_Based_Segmentation.php
-
-Link to access image on ONEdRIVE
-https://westernstatecoloradou-my.sharepoint.com/:u:/g/personal/marcos_ordonez_western_edu/EXoWoUeohZdKk-me1iAHF-gBABaIlLkrLvVN05MPQsLT3w?e=ltUGxq
+## References
+ - [Tello API reference](https://github.com/damiafuentes/DJITelloPy/blob/master/djitellopy/tello.py)
+ - [Watershed algorithm](https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Watershed_Algorithm_Marker_Based_Segmentation.php)
+### DJI Tello Hand Gesture control: 
+ - [Tello Gesture Control git repo](https://github.com/kinivi/tello-gesture-control)
+ - [TF hand gesture recognition tutorial](https://techvidvan.com/tutorials/hand-gesture-recognition-tensorflow-opencv/)
+ - [mediapipe](https://www.section.io/engineering-education/creating-a-hand-tracking-module/)
+### Code sources
+ - [Git repository](https://github.com/Jaketa-CS/CS497_OptimalFlowDrone)
+ - [Link to access image on ONEdRIVE](https://westernstatecoloradou-my.sharepoint.com/:u:/g/personal/marcos_ordonez_western_edu/EXoWoUeohZdKk-me1iAHF-gBABaIlLkrLvVN05MPQsLT3w?e=ltUGxq) (Western Colorado University account required)

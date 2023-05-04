@@ -3,11 +3,37 @@ import numpy as np
 import os
 from glob import glob
 
+"""
+This script is built to be a one-to-many image preprocessing script
+For each single image, many training images can be generated
+Currently only brightness adaptations and a Canny edge image is output
+
+File structure assumptions:
+Given a source folder,
+    which contains a list of folders of topics/tasks/etc,
+        each image in each folder will be processed into many
+
+For example:
+SRCDIR
+  |- Label1
+  |    |- img1.jpg
+  |    |- img2.jpg
+  |    |- img3.jpg
+  |- Label2
+       |- img3.jpg
+       |- img2.jpg
+       |- img1.jpg
+"""
+
+# environment variables
 outdir = 'outimgs'
 srcdir = 'inimgs'
 brightnessval = 25
 brightnessscale = 4
 
+# convert to a valid string of a output image
+# this is necessary as this script needs to be run from where the src and
+#   out directories live
 def outputFilename(img, purpose=''):
     global outdir
     if not purpose:
@@ -26,11 +52,12 @@ def change_brightness(img, value=30):
     img = cv.cvtColor(final_hsv, cv.COLOR_HSV2BGR)
     return img
 
+# works fine if the output dir is removed
 if not os.path.isdir(outdir):
     os.mkdir(outdir)
 
+# iterate through src directories
 for d in os.listdir(srcdir):
-    print(d)
     if not os.path.isdir(outdir + '/' + d):
         os.mkdir(outdir + '/' + d)
     if os.path.isdir(srcdir + '/' + d):
