@@ -22,32 +22,32 @@ Signed; Marcos Ordonos, Jake Teeter, and Andrew Nyland
 ### Preprocessing
 These scripts handle recording training data and preprocessing the data to make it more useful, or more advantageous for a neural network to be applied.
 
- - `create.py`: Initial blurring and processing of recorded images from the drone of hand gestures 
- - `preprocessing.py`: generates one-to-many of images
+ - **create.py**: Initial blurring and processing of recorded images from the drone of hand gestures 
+ - **preprocessing.py**: generates one-to-many of images
      - generated images are brightness adjusted and edges detected
 
-#### CNN Training
+### CNN Training
 
- - `droneCNN.py`: saves a CNN model on recorded training images
+ - **droneCNN.py**: saves a CNN model on recorded training images
 
-#### CNN Inference
+### CNN Inference
 
- - `drone.py`: Tests label identification of the CNN on a live feed from the drone
- - `drone_t.py`: Same as drone.py but with mediapipe integration
+ - **drone.py**: Tests label identification of the CNN on a live feed from the drone
+ - **drone_t.py**: Same as drone.py but with mediapipe integration
 
-#### Utilities
+### Utilities
 
- - `test1.py`: Basic flight path of the drone; takes off, flies while tracing a 1m cube, rotates 90 degrees, and repeats that flight path before landing
- - `test2.py`: Same as test1.py with video streaming
- - `test3.py`: Same as test2.py with optical flow implemented
- - `getspecs.py`: Basic situational information about the drone, no controls
- - `recframes.py`: Records frames from live stream for training data, no flight
+ - **test1.py**: Basic flight path of the drone; takes off, flies while tracing a 1m cube, rotates 90 degrees, and repeats that flight path before landing
+ - **test2.py**: Same as test1.py with video streaming
+ - **test3.py**: Same as test2.py with optical flow implemented
+ - **getspecs.py**: Basic situational information about the drone, no controls
+ - **recframes.py**: Records frames from live stream for training data, no flight
      - 'SPACE' for start/stop recording, this is represented in the menubar of the live feed view
-     - 'q'/'Q' to exit the program
+     - 'q' or 'Q' to exit the program
      - uses counter.txt to count recordings and saves frames to a folder as individual images
 
-#### Supplemental
- - `counter.txt`: a necessary text file for recframes.py, if used by a new user we recommend filling this file with a string of '-1' (as such, it will start at 0)
+### Supplemental
+ - **counter.txt**: a necessary text file for recframes.py, if used by a new user we recommend filling this file with a string of '-1' (as such, it will start at 0)
 
 
 ### More Information
