@@ -37,7 +37,7 @@ These scripts handle recording training data and preprocessing the data to make 
 ## Scripts - more information
 
 Below is a sample output for `getspecs.py`:
-"""
+```
 [INFO] tello.py - 122 - Tello instance was initialized. Host: '192.168.10.1'. Port: '8889'.
 [INFO] tello.py - 437 - Send command: 'command'
 [INFO] tello.py - 461 - Response command: 'ok'
@@ -45,7 +45,7 @@ Battery: 100
 Temperature: (55, 59)
 Barometer: 232850.0
 RPY: 0, 0, -153
-"""
+```
 
 Below is a state machine representation of `recframes.py`:
 ![recframes.png](recframes.png)
